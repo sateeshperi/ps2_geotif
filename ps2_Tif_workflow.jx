@@ -1,0 +1,47 @@
+{
+  "define": {
+    # Import from Args file with --jx-args cmd option
+    # "DATA_FILE_LIST"
+
+    "CLEANED_META_DIR": "cleanmetadata_out/",
+    "TIFS_DIR": "bin2tif_out/",
+    "BETYDB_URL": "https://terraref.ncsa.illinois.edu/bety/",
+    "BETYDB_KEY": "9999999999999999999999999999999999999999",
+  },
+  "rules": [
+    {
+      # cleanmetadata
+      "command": "singularity run -B $(pwd):/mnt --pwd /mnt docker://agpipeline/cleanmetadata:latest --metadata ${METADATA} ${SENSOR}",
+      "environment": {
+        "RAW_DATA_PATH": DATA_SET["PATH"],
+        "UUID": DATA_SET["UUID"],
+        "SENSOR": "ps2Top",
+        "BETYDB_KEY": "9999999999999999999999999999999999999999"
+      },
+      "inputs": [
+        DATA_SET["PATH"] + DATA_SET["UUID"] + "_metadata.json",
+        "cached_betydb/bety_experiments.json"
+      ],
+      "outputs": [
+        CLEANED_META_DIR + DATA_SET["UUID"] + "_metadata_cleaned.json"
+      ]
+    } for DATA_SET in DATA_SETS,
+    {
+      # convert bin to tif
+      "command": "singularity run -B $(pwd):/mnt --pwd /mnt docker://acicarizona/ps2top-bin2tif:2.1 --result print --metadata ${METADATA} ${BIN}",
+      "environment": {
+        "RAW_DATA_PATH": DATA_SET["PATH"],
+        "UUID": DATA_SET["UUID"],
+        "BETYDB_KEY": "9999999999999999999999999999999999999999"
+      },
+      "inputs": [
+        CLEANED_META_DIR + DATA_SET["UUID"] + "_metadata_cleaned.json",
+        "cached_betydb/bety_experiments.json",
+        DATA_SET["DATA_FILES"]
+      ],
+      "outputs": [
+        TIFS_DIR + DATA_SET["UUID"] + ".tif"
+      ]
+    } for DATA_SET in DATA_SETS,
+  ]
+}
