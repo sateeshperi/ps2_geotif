@@ -42,8 +42,7 @@ def main():
     if len(sys.argv[1]) == 0:
         raise Exception("Error! path empty")
     data_set_struct = {}
-    data_set_struct["root"] = []
-    data_set_struct["subdir"] = []
+    data_set_struct["DATA_SETS"] = []
     subdir_list = scan_for_subdir(base_dir)
     for subdir_path in subdir_list:
         uuid_str, data_files = scan_for_data_files(subdir_path)
@@ -51,7 +50,7 @@ def main():
         subdir["UUID"] = uuid_str
         subdir["PATH"] = subdir_path
         subdir["DATA_FILES"] = data_files
-        data_set_struct["subdir"].append(subdir)
+        data_set_struct["DATA_SETS"].append(subdir)
     # Generate formatted jx to stdout
     dump_str = json.dumps(data_set_struct, indent=4, sort_keys=True)
     print(dump_str)
