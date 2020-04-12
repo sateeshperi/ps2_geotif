@@ -12,11 +12,12 @@
   "rules": [
     {
       # cleanmetadata
-      "command": "singularity run -B $(pwd):/mnt --pwd /mnt docker://agpipeline/cleanmetadata:latest --metadata ${METADATA} ${SENSOR}",
+      "command": "mkdir -p ${WORKING_SPACE} && singularity run -B $(pwd):/mnt --pwd /mnt docker://agpipeline/cleanmetadata:latest --metadata ${METADATA} --working_space ${WORKING_SPACE} ${SENSOR}",
       "environment": {
         "METADATA": ONE_BIN["METADATA"],
         "SENSOR": "ps2Top",
-        "BETYDB_KEY": "9999999999999999999999999999999999999999"
+        "BETYDB_KEY": "9999999999999999999999999999999999999999",
+        "WORKING_SPACE": "cleanmetadata_out/"
       },
       "inputs": [
         ONE_BIN["METADATA"],
@@ -28,11 +29,12 @@
     } for ONE_BIN in METADATA_FILES,
     {
       # convert bin to tif
-      "command": "singularity run -B $(pwd):/mnt --pwd /mnt docker://acicarizona/ps2top-bin2tif:2.1 --result print --metadata ${METADATA} ${BIN}",
+      "command": "mkdir -p ${WORKING_SPACE} && singularity run -B $(pwd):/mnt --pwd /mnt docker://acicarizona/ps2top-bin2tif:2.1 --result print --metadata ${METADATA} --working_space ${WORKING_SPACE} ${BIN}",
       "environment": {
         "METADATA": CLEANED_META_DIR + ONE_BIN["UUID"] + "_metadata_cleaned.json",
-        "BIN": ONE_BIN["PATH"] + ONE_BIN["BIN"],
-        "BETYDB_KEY": "9999999999999999999999999999999999999999"
+        "BIN": ONE_BIN["PATH"] + "/" + ONE_BIN["BIN"],
+        "BETYDB_KEY": "9999999999999999999999999999999999999999",
+        "WORKING_SPACE": "bin2tif_out/"
       },
       "inputs": [
         ONE_BIN["PATH"] + "/" + ONE_BIN["BIN"],
@@ -40,7 +42,7 @@
         "cached_betydb/bety_experiments.json",
       ],
       "outputs": [
-        TIFS_DIR + ONE_BIN["UUID"] + ONE_BIN["BIN_NO"] + ".tif"
+        TIFS_DIR + ONE_BIN["UUID"] + "_rawData" + ONE_BIN["BIN_NO"] + ".tif"
       ]
     } for ONE_BIN in BIN_FILES,
   ]
