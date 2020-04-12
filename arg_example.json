@@ -1,27 +1,61 @@
 {
     "BIN_FILES": [
         {
-            "BIN": "87543e19-9f95-484f-9934-731023438e98_rawData0038.bin",
-            "BIN_NO": "0038",
-            "PATH": "2020-02-26/2020-02-26__23-25-06-497",
-            "UUID": "87543e19-9f95-484f-9934-731023438e98"
+            "BIN": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681_rawData0070.bin",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-57-43-779",
+            "UUID": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681"
         },
         {
-            "BIN": "87543e19-9f95-484f-9934-731023438e98_rawData0016.bin",
-            "BIN_NO": "0016",
-            "PATH": "2020-02-26/2020-02-26__23-25-06-497",
-            "UUID": "87543e19-9f95-484f-9934-731023438e98"
+            "BIN": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681_rawData0070.bin",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-57-43-779",
+            "UUID": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681"
+        },
+        {
+            "BIN": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681_rawData0070.bin",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-57-43-779",
+            "UUID": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681"
+        },
+        {
+            "BIN": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681_rawData0070.bin",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-57-43-779",
+            "UUID": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681"
+        },
+        {
+            "BIN": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681_rawData0070.bin",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-57-43-779",
+            "UUID": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681"
+        },
+        {
+            "BIN": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681_rawData0070.bin",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-57-43-779",
+            "UUID": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681"
+        }
     ],
     "METADATA_FILES": [
         {
-            "METADATA": "dded3eec-4c22-4989-9686-fb3cb13f74cc_metadata.json",
+            "METADATA": "dded3eec-4c22-4989-9686-fb3cb13f74cc",
             "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-58-24-792",
             "UUID": "dded3eec-4c22-4989-9686-fb3cb13f74cc"
         },
         {
-            "METADATA": "1b4e516d-67c2-4465-93ae-497588ef6d69_metadata.json",
+            "METADATA": "1b4e516d-67c2-4465-93ae-497588ef6d69",
             "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-57-02-751",
             "UUID": "1b4e516d-67c2-4465-93ae-497588ef6d69"
         },
+        {
+            "METADATA": "384d94a4-c552-4ebc-a4a8-24e15daccc1b",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-59-05-804",
+            "UUID": "384d94a4-c552-4ebc-a4a8-24e15daccc1b"
+        },
+        {
+            "METADATA": "2cb10180-41b0-4fd8-a8c3-0bd6ecbc97e4",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-56-25-373",
+            "UUID": "2cb10180-41b0-4fd8-a8c3-0bd6ecbc97e4"
+        },
+        {
+            "METADATA": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681",
+            "SUB_DIR": "/home/neo/Downloads/PhytoOracle/PS2Top/2020-02-05__19-57-43-779",
+            "UUID": "6f7dd68e-8f2b-4e88-8f6c-8dba03f49681"
+        }
     ]
 }
