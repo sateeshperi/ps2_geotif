@@ -7,41 +7,41 @@
     "TIFS_DIR": "bin2tif_out/",
     "BETYDB_URL": "https://terraref.ncsa.illinois.edu/bety/",
     "BETYDB_KEY": "9999999999999999999999999999999999999999",
+    "SENSOR": "ps2Top"
   },
   "rules": [
     {
       # cleanmetadata
       "command": "singularity run -B $(pwd):/mnt --pwd /mnt docker://agpipeline/cleanmetadata:latest --metadata ${METADATA} ${SENSOR}",
       "environment": {
-        "RAW_DATA_PATH": DATA_SET["PATH"],
-        "UUID": DATA_SET["UUID"],
+        "METADATA": ONE_BIN["METADATA"],
         "SENSOR": "ps2Top",
         "BETYDB_KEY": "9999999999999999999999999999999999999999"
       },
       "inputs": [
-        DATA_SET["PATH"] + DATA_SET["UUID"] + "_metadata.json",
+        ONE_BIN["METADATA"],
         "cached_betydb/bety_experiments.json"
       ],
       "outputs": [
-        CLEANED_META_DIR + DATA_SET["UUID"] + "_metadata_cleaned.json"
+        CLEANED_META_DIR + ONE_BIN["UUID"] + "_metadata_cleaned.json"
       ]
-    } for DATA_SET in DATA_SETS,
+    } for ONE_BIN in METADATA_FILES,
     {
       # convert bin to tif
       "command": "singularity run -B $(pwd):/mnt --pwd /mnt docker://acicarizona/ps2top-bin2tif:2.1 --result print --metadata ${METADATA} ${BIN}",
       "environment": {
-        "RAW_DATA_PATH": DATA_SET["PATH"],
-        "UUID": DATA_SET["UUID"],
+        "METADATA": CLEANED_META_DIR + ONE_BIN["UUID"] + "_metadata_cleaned.json",
+        "BIN": ONE_BIN["PATH"] + ONE_BIN["BIN"],
         "BETYDB_KEY": "9999999999999999999999999999999999999999"
       },
       "inputs": [
-        CLEANED_META_DIR + DATA_SET["UUID"] + "_metadata_cleaned.json",
+        ONE_BIN["PATH"] + "/" + ONE_BIN["BIN"],
+        CLEANED_META_DIR + ONE_BIN["UUID"] + "_metadata_cleaned.json",
         "cached_betydb/bety_experiments.json",
-        DATA_SET["DATA_FILES"]
       ],
       "outputs": [
-        TIFS_DIR + DATA_SET["UUID"] + ".tif"
+        TIFS_DIR + ONE_BIN["UUID"] + ONE_BIN["BIN_NO"] + ".tif"
       ]
-    } for DATA_SET in DATA_SETS,
+    } for ONE_BIN in BIN_FILES,
   ]
 }
