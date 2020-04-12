@@ -49,7 +49,8 @@ def main():
         subdir = {}
         subdir["UUID"] = uuid_str
         subdir["PATH"] = subdir_path
-        subdir["DATA_FILES"] = data_files
+    for bin in data_files:
+        subdir["BIN_FILE"] = bin
         data_set_struct["DATA_SETS"].append(subdir)
     # Generate formatted jx to stdout
     dump_str = json.dumps(data_set_struct, indent=4, sort_keys=True)
